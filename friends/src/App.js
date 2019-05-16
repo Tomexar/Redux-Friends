@@ -1,18 +1,22 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
-import logIn from './Components/logIn';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import login from './Components/LogIn';
 import Friends from './Components/Friends';
 import './App.css';
+import PrivateRoute from './PrivateRoute';
 
-class App extends React.Component {
-  render() {
+function App() {
     return (
+      <Router>
       <div className="App">
-        Hello
-        <Route exact path ='/' component = {logIn}/>
-        <Route path ='/friends' component = {Friends}/>
+        <nav>
+          <Link to ='/'>LogIn</Link>
+          <Link to ='/friends'>Friends</Link>
+        </nav>
+        <Route exact path ='/' component = {login}/>
+        <PrivateRoute exact path ='/friends' component = {Friends}/>
     </div>
+    </Router>
     );
   }
-}
 export default App;
