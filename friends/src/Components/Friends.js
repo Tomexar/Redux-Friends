@@ -2,12 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { getFriends } from '../actions';
+import Friend from './Friend'
 
 class Friends extends React.Component {
+    constructor() {
+        super();
+    }
 
-  componentDidMount(){
-      this.props.getFriends();
-  }
+    componentDidMount() {
+        this.props.getFriends();
+    }
     // state = {
     //     newFriend: ''
     // }
@@ -23,17 +27,14 @@ class Friends extends React.Component {
     // };
 
     render() {
+        console.log(this.props.friends)
         return (
             <div className='friends'>
                 <h1>this is the friends page</h1>
-                {props.isLoading &&(
-                    <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
-                )}
-                {props.friends &&(
-                    <h1>{this.props.friends}</h1>
-                )}
-                })}
-
+                {/* {this.props.friends.map(friend =>{
+                        return <Friend key = {friend.name} friend = {friend}/>
+                    }
+                )} */}
             </div>
         )
     }

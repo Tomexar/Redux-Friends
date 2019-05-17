@@ -1,7 +1,7 @@
 import {
     FETCH_LIST_START,
     FETCH_LIST_SUCCESS,
-    FETCH_LIST_FAIL
+
 }   from '../actions';
 
 const initialStateList = {
@@ -19,15 +19,19 @@ function friendsReducer(state = initialStateList, action){
                 isLoading: true
             };
         case FETCH_LIST_SUCCESS:
+            console.log(action.payload)
             return {
                 ...state,
                 friends : action.payload,
                 isLoading: false
             }
+        
         default: 
+            
             return state;
     }
 }
+
 
 
 

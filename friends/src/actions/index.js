@@ -13,6 +13,7 @@ export const login = creds => dispatch =>{
     return axios
         .post('http://localhost:5000/api/login', creds)
         .then (res =>{
+            console.log(res.data)
             localStorage.setItem('token', res.data.payload);
             dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload})
         })
@@ -21,10 +22,12 @@ export const login = creds => dispatch =>{
 
 export const getFriends = () => dispatch =>{
     dispatch( {type: FETCH_LIST_START});
-        axios  
+        axiosWithAuth()  
             .get('http://localhost:5000/api/friends')
-            .then(res => dispatch({type: FETCH_LIST_SUCCESS, payload: res.data}))
-           
+            .then(res => {
+                console.log(res.data)
+                dispatch({type: FETCH_LIST_SUCCESS, payload: res.data})
+            })
             .catch (err => console.log(err));
 }
 
